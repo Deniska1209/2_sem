@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
     setlocale(LC_ALL, "Russian"); 
 
     if (argc != 2) {
-        printf("Нету памяти\n", argv[0]);
+        printf("Ошибка\n", argv[0]);
         return 1;
     }
 
