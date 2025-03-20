@@ -3,7 +3,6 @@
 #include <locale.h>
 #include <string.h>
 
-// Функция для безопасного ввода целого числа
 int safe_input_int(const char* prompt) {
     int value;
     while (1) {
@@ -19,7 +18,6 @@ int safe_input_int(const char* prompt) {
     return value;
 }
 
-// Функция для вывода содержимого файла на экран
 void print_file_contents(const char* filename) {
     FILE* file;
     errno_t err = fopen_s(&file, filename, "rb");
@@ -36,12 +34,10 @@ void print_file_contents(const char* filename) {
     fclose(file);
 }
 
-// Функция для проверки, является ли символ цифрой
 int is_digit(char ch) {
     return ch >= '0' && ch <= '9';
 }
 
-// Функция для нахождения суммы всех цифр в файле
 int sum_of_digits_in_file(const char* filename) {
     FILE* file;
     errno_t err = fopen_s(&file, filename, "rb");
@@ -62,7 +58,6 @@ int sum_of_digits_in_file(const char* filename) {
     return sum;
 }
 
-// Функция для замены самого длинного числа в файле на пробелы
 void replace_longest_number_with_spaces(const char* filename) {
     FILE* file;
     errno_t err = fopen_s(&file, filename, "r+");
@@ -110,7 +105,6 @@ void replace_longest_number_with_spaces(const char* filename) {
     fclose(file);
 }
 
-// Функция для записи символов в файл до ввода '!'
 void write_to_file_until_exclamation(const char* filename) {
     FILE* file;
     errno_t err = fopen_s(&file, filename, "wb");
@@ -127,7 +121,6 @@ void write_to_file_until_exclamation(const char* filename) {
     fclose(file);
 }
 
-// Основная функция
 int main(int argc, char* argv[]) {
     setlocale(LC_ALL, "Russian");
 
@@ -138,18 +131,14 @@ int main(int argc, char* argv[]) {
 
     const char* filename = argv[1];
 
-    // Задание 1: Заполнение файла символами с клавиатуры
     write_to_file_until_exclamation(filename);
 
-    // Вывод содержимого файла на экран
     printf("Содержимое файла:\n");
     print_file_contents(filename);
 
-    // Задание 2: Нахождение суммы всех цифр в файле
     int sum = sum_of_digits_in_file(filename);
     printf("Сумма всех цифр в файле: %d\n", sum);
 
-    // Задание 3: Замена самого длинного числа в файле на пробелы
     replace_longest_number_with_spaces(filename);
     printf("Содержимое файла после замены самого длинного числа на пробелы:\n");
     print_file_contents(filename);
