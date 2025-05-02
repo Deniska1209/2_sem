@@ -97,6 +97,7 @@ void displayStack(Stack* stack) {
 
 // Функция для создания третьего стека, упорядоченного по убыванию
 Stack* mergeStacksDescending(Stack* stack1, Stack* stack2) {
+    // Размер третьего стека равен сумме размеров двух исходных стеков
     Stack* result = createStack(stack1->capacity + stack2->capacity);
     int val1, val2;
 
@@ -173,7 +174,7 @@ int main() {
             }
             else {
                 Stack* mergedStack = mergeStacksDescending(stackDesc, stackAsc);
-                printf("Третий стек (убывающий):\n");
+                printf("Третий стек (убывающий, размер = %d):\n", stackDesc->capacity + stackAsc->capacity);
                 displayStack(mergedStack);
                 free(mergedStack->data);
                 free(mergedStack);
